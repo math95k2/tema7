@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Titel</h1>
+    </header>
+    <main>
+
+        <h2>Undertitel</h2>
+        <section>
+            <article>
+                <img src="https://placeimg.com/640/480/nature" alt="">
+
+                <h3>Article 1</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </article>
+
+            <article>
+                <img src="https://placeimg.com/640/480/arch" alt="">
+
+                <h3>Article 2</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </article>
+        </section>
+    </main>
+
+    <footer>This is the footer</footer>
+    <script>
+        const overskrift = document.querySelector("h1");
+        overskrift.textContent;
+        console.log(overskrift.textContent);
+
+        const underoverskrift = document.querySelector("h2");
+        overskrift.textContent;
+        console.log(underoverskrift.textContent);
+
+        const underunderoverskrift1 = document.querySelector("article:nth-child(1) h3");
+        overskrift.textContent;
+        console.log(underunderoverskrift1.textContent);
+        underunderoverskrift1.textContent = "Artikel 1";
+
+        const underunderoverskrift2 = document.querySelector("article:nth-child(2) h3");
+        overskrift.textContent;
+        console.log(underunderoverskrift2.textContent);
+        underunderoverskrift2.textContent = "Artikel 2";
+
+        const article1 = document.querySelector("article");
+        console.log(article1);
+
+        const article2 = document.querySelector("article:nth-child(2)");
+        console.log(article2);
+
+        const pic1 = document.querySelector("article:nth-child(1) img");
+        console.log(pic1);
+
+        const pic2 = document.querySelector("article:nth-child(2) img");
+        console.log(pic2);
+
+        const p1 = document.querySelector("article:nth-child(1) p");
+        console.log(p1);
+        p1.innerHTML = "Her er en ny <b>tekst</b>";
+
+        const p2 = document.querySelector("article:nth-child(2) p");
+        console.log(p2);
+        p2.textContent = "Her er også en ny tekst";
+
+        const footer = document.querySelector("footer");
+        footer.textContent;
+        console.log(footer);
+
+        const h1 = document.querySelector("h1");
+        console.log(h1.textContent);
+        h1.textContent = "Ny titel";
+    </script>
+</body></html>
