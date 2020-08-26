@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Titel</h1>
+    </header>
+    <main>
+
+        <h2>Undertitel</h2>
+        <section>
+            <article>
+                <img src="https://placeimg.com/640/480/nature" alt="">
+
+                <h3>Article 1</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </article>
+
+            <article>
+                <img src="https://placeimg.com/640/480/arch" alt="">
+
+                <h3>Article 2</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </article>
+        </section>
+    </main>
+
+    <footer>This is the footer</footer>
+    <script>
+        const pic1 = document.querySelector("article:nth-child(1) img");
+        console.log(pic1);
+        pic1.src = "foto1.jpg";
+        pic1.alt = "sød hund";
+
+        let mainSection = document.querySelector("section");
+
+        let newArticle = document.createElement("article");
+
+        let overskrift = document.createElement("h3");
+
+        let overskriftText = document.createTextNode("Article 3");
+
+        let img = document.createElement("img");
+        img.src = "foto2.jpg";
+
+        let p = document.createElement("p");
+        let pText = document.createTextNode("lorem ipsum");
+
+        overskrift.appendChild(overskriftText);
+        newArticle.appendChild(overskrift);
+        newArticle.appendChild(p);
+        p.appendChild(pText);
+        newArticle.appendChild(img);
+        mainSection.appendChild(newArticle);
+    </script>
+</body></html>
