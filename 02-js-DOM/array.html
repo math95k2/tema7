@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <div id="display"></div>
+    <script>
+        let playliste = ["Grease", "Summer nights", "Hopelessly Devoted To You", "You're The One That I Want", "Sandy", "Beauty School Dropout", "Look At Me I'm Sandra Dee", "Greased Lightnin'", "It's Raining On Prom Night", "Alone At A Drive In Movie"];
+        playliste.forEach(sang => {
+            document.querySelector("#display").innerHTML += `${sang} <br>`;
+        })
+    </script>
+</body></html>
