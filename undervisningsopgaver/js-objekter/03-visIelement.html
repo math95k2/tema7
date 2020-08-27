@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <article id="dyr">
+        <h3></h3>
+        <img src="" alt="">
+        <p>Type: </p>
+        <p>Levested: </p>
+
+
+    </article>
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+
+        function start() {
+            console.log("DOM'en er loaded");
+        }
+
+        let overskrift = document.querySelector("h3");
+
+        let overskriftText = document.createTextNode("Gris");
+
+        let type = document.querySelector("p");
+
+        let typeText = document.createTextNode("pattedyr");
+
+        let levested = document.querySelector("p:nth-of-type(2)");
+
+        let levestedText = document.createTextNode("svinefarme");
+
+        let img = document.querySelector("img");
+        img.src = "http://mabe-kea.dk/E19/pics/pig.png";
+
+
+        overskrift.appendChild(overskriftText);
+
+        type.appendChild(typeText);
+
+        levested.appendChild(levestedText);
+
+        let dyr = {
+            "navn": "gris",
+            "type": "pattedyr",
+            "levested": "svinefarme",
+            "billede": "http://mabe-kea.dk/E19/pics/pig.png"
+        }
+
+        console.log(`dyr: ${dyr.navn}, type: ${dyr.type}, levested: ${dyr.levested}`);
+
+    </script>
+</body>
+
+</html>
