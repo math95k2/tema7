@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Persongalleri</title>
+    <style>
+        article {
+            border: 1px solid #333;
+            padding: 10px;
+        }
+
+        img {
+            max-width: 30%;
+        }
+
+        section {
+            width: 90vw;
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        }
+
+        .valgt {
+            color: red;
+        }
+
+        header {
+            text-align: center;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #popop {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba (0, 0, 0, .8);
+        }
+
+        #popop article {
+            width: 80vw;
+            height: 80vh;
+            margin: 4rem auto;
+            background-color: white;
+        }
+
+        #luk {
+            position: fixed;
+            top: 0;
+            right: 1em;
+            background-color: white;
+            color: black;
+            border-radius: 5px;
+            padding: .1em;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>Alle</h1>
+    <header>
+        <button class="filter valgt" data-køn="alle">Alle</button>
+        <button class="filter" data-køn="m">Mænd</button>
+        <button class="filter" data-køn="k">Kvinder</button>
+        <button class="filter" data-køn="andet">Andet</button>
+    </header>
+
+
+
+    <section id="popop">
+        <div>
+            <p id="luk">X</p>
+            <img src="" alt="">
+
+            <section>
+                <h2 class="navn"></h2>
+                <p>Alder: <span class="alder"></span></p>
+                <p>Religion: <span class="rel"></span></p>
+                <p>Hobby: <span class="hobby"></span></p>
+            </section>
+
+        </div>
+    </section>
+
+    <template>
+        <article>
+
+            <h2 class="navn"></h2>
+            <p class="efternavn"></p>
+            <p class="job"></p>
+            <img src="" alt="">
+
+        </article>
+    </template>
+
+
+
+    <script>
+        let container = document.querySelector("section");
+        let temp = document.querySelector("template");
+        let filter = "alle";
+        let personer;
+        const popop = document.querySelector("#popup");
+
+        const link = "https://spreadsheets.google.com/feeds/list/1mtHhpoEkYqVqr1TSnKQ1_sQZWI7FRVjcw3H1oatDOVQ/od6/public/values?alt=json";
+
+        async function hentdata() {
+            const respons = await fetch(link);
+            personer = await respons.json();
+            addEventListenersToButtons();
+            visPersoner();
+        }
+
+        function visPersoner() {
+
+            container.innerHTML = "";
+            personer.feed.entry.forEach(person => {
+
+                if (filter == "alle" || filter == person.gsx$køn.$t) {
+
+                    console.log(person);
+
+                    const klon = temp.cloneNode(true).content;
+
+                    klon.querySelector(".navn").textContent = person.gsx$navn.$t;
+
+                    klon.querySelector(".efternavn").textContent = person.gsx$efternavn.$t;
+
+                    klon.querySelector("img").src = person.gsx$billede.$t;
+                    klon.querySelector(".job").textContent = person.gsx$job.$t;
+
+                    klon.querySelector("article").addEventListener("click", () => visDetaljer(person));
+
+
+                    container.appendChild(klon);
+                }
+
+            })
+
+        }
+
+        function visDetaljer(person) {
+            popop.style.display = "block";
+            popop.querySelector("h2").textContent = person.gsx$navn.$t;
+            popop.querySelector("h2").textContent += "" + person.gsx$efternavn.$t;
+            popop.querySelector(".alder").textContent = person.gsx$alder.$t;
+            popop.querySelector(".rel").textContent = person.gsx$religion.$t;
+            popop.querySelector("hobby").textContent = person.gsx$hobby.$t;
+        }
+
+        document.querySelector("#luk").addEventListener("click"), () => popop.style.display = "none");
+
+        hentdata()
+
+        function addEventListenersToButtons() {
+            document.querySelectorAll(".filter").forEach((btn) => {
+                btn.addEventListener("click", filterBTNs);
+            })
+        }
+
+        function filterBTNs() {
+            filter = this.dataset.køn;
+            document.querySelector("h1").textContent = this.textContent;
+            document.querySelectorAll(".filter").forEach((btn) => {
+
+                btn.classList.remove("valgt");
+            })
+            this.classList.add("valgt");
+            visPersoner();
+        }
+
+    </script>
+</body>
+
+</html>
